@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Frontend.Models;
+using System;
 
 namespace Frontend.Controllers
 {
@@ -25,6 +22,20 @@ namespace Frontend.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult CcdaParser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CcdaParser(MessageHandler.TaskModel DataModel)
+        {
+            Console.WriteLine(DataModel.PracticeCode);
+            Console.WriteLine(DataModel.DataStorePath);
+            Console.WriteLine(DataModel.EmailOnCompletion);
             return View();
         }
 
