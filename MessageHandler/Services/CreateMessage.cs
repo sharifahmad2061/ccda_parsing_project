@@ -2,7 +2,7 @@ using System;
 using MessageHandler;
 using Microsoft.Extensions.Configuration;
 
-namespace Services
+namespace MessageHandler.Services
 {
     public class CreateMessage : ICreateMessage
     {

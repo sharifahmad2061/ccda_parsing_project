@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Frontend.Models;
 using System;
+using MessageHandler.Services;
 
 namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICreateMessage _taskHandler;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICreateMessage taskHandler)
         {
             _logger = logger;
+            _taskHandler = taskHandler;
         }
 
         public IActionResult Index()
@@ -36,6 +39,7 @@ namespace Frontend.Controllers
             Console.WriteLine(DataModel.PracticeCode);
             Console.WriteLine(DataModel.DataStorePath);
             Console.WriteLine(DataModel.EmailOnCompletion);
+            _taskHandler.QueueTask(DataModel);
             return View();
         }
 

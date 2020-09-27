@@ -1,6 +1,6 @@
 using MessageHandler;
 
-namespace Services
+namespace MessageHandler.Services
 {
     public interface ICreateMessage
     {
