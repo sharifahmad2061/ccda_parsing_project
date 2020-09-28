@@ -4,16 +4,19 @@ using Microsoft.Extensions.Logging;
 using Frontend.Models;
 using System;
 using MessageHandler.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration _config;
         private readonly ILogger<HomeController> _logger;
         private readonly ICreateMessage _taskHandler;
 
-        public HomeController(ILogger<HomeController> logger, ICreateMessage taskHandler)
+        public HomeController(IConfiguration configuration, ILogger<HomeController> logger, ICreateMessage taskHandler)
         {
+            _config = configuration;
             _logger = logger;
             _taskHandler = taskHandler;
         }
