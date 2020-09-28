@@ -11,7 +11,9 @@ namespace MessageHandler
         public static IServiceCollection AddMessageHandler(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<ICreateMessage, CreateMessage>();
-            services.AddRabbitMqClient(configuration.GetSection("rabbitmq"));
+            services.AddRabbitMqClient(configuration.GetSection("rabbitmq"))
+                .AddProductionExchange(configuration.GetValue<string>("rabbitmq:exchange"),
+                    configuration.GetSection("RabbitMqExchange"));
             // services.AddRabbitMqClient();
             return services;
         }
