@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using Services;
+using MessageHandler.Services;
 
 namespace MessageHandler
 {
